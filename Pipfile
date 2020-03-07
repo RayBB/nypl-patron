@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "==5.3.5"
+responses = "==0.10.12"
 
 [packages]
 requests = "==2.22.0"
