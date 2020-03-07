@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<link rel="stylesheet" type="text/css" href="/scripts/ProStyles.css" />
+<link rel="stylesheet" type="text/css" href="/screens/styles.css" />
+
+    <title>Library Log in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/scripts/common.js"></script>
+    
+    <style>
+      div.loginPage { width: 1313px; margin: 57px auto 0 auto; } @media (max-width: 767px) { div.loginPage { width: auto; margin-top: 47px; } } div #login { width: 100%; margin: 0 auto; } @media (max-width: 767px) { div #login { width: auto; } } div #login fieldset { border: none; margin: 0 2px; padding: .35em 8em 1.75em; border-top: 2px solid #1da1d4; padding-left: 135px; padding-bottom: 16px; } @media (max-width: 555px) { div #login fieldset { padding: 0 0 0 1em; border-top: none; } } #username { padding: 0 0 1em 0; } #username input, #ipssopinentry input { width: 151px; padding: 12px; border: 2px solid #a3a19e; border-radius: 3px; font-style: italic; color: #333; font-family: system-ui; font-weight: 400; } .formButtons { text-align: left; padding-top: 0; padding-left: 240px; } .formButtons a { display: inline; text-decoration: none; } .formButtons input[type="submit"] { border: 2px solid #2799c5; border-radius: 25px; color: #2799c5; background-color: white; background-image: none; padding: 10px 15px 10px 17px; margin-bottom: 5px; text-transform: uppercase; font-size: .70rem; min-height: 19px; display: table-cell; vertical-align: middle; text-align: center; } @media (max-width: 555px) { .formButtons { padding-left: 0; text-align: center; } } .loginActions { margin-top: 4em; text-align: left; font-size: 1em; margin-left: 65px; } .loginActions a { margin: 0 0.3em 0 0.5em; } @media (max-width: 555px) { .loginActions { margin: 1em; } } .loginActionScreenOnly, .loginActionSeparator, .loginActionText { display: inline; } .loginActionSeparator { border-left: 1px solid #484844; } .loginAction { background: none; margin: 0; } .loginAction a { background: none; color: #014184; display: inline; height: auto; padding: 0px; text-decoration: underline; border-top: none; } .loginArea label { margin-top: 1em; display: inline-block; width: 6rem; text-align: right; margin-right: .5em; font-family: system-ui; font-weight: 700; letter-spacing: .03em; } .loginArea legend { font-style: normal; padding: 24px 27px 17px; border: 2px solid #1da1d4; border-bottom: none; position: relative; bottom: 27px; background-color: #fff; margin-left: -31px; text-transform: uppercase; font-family: system-ui; font-weight: 700; letter-spacing: .04em; font-size: 14px; } @media (max-width: 555px) { .loginArea legend { padding: 16px 11px 14px 16px; border: 2px solid #1da1d4; border-bottom: none; bottom: 29px; margin-left: 0; } } #rememberLogin { position: relative; } #rememberLogin input#rememberme { position: absolute; top: 50%; margin-left: 10px; } .loginActions { font-weight: bold; } fieldset .barcodeAltChoice { margin: 2em 0; } .loginArea1Col form { width: 18em; } .loginTopLogo { margin: 7em auto 1em; padding-bottom: 1.8em; } .loginSubmit { display: none; } #status.errors { margin: 1rem auto 1rem 6.6rem; width: 270px; padding: 1.5rem 1.5rem 2rem 1.5rem; border: none; border-radius: 0; font-style: italic; border: solid red 2px; margin-bottom: 1rem; color: red; border-left: none; border-right: none; font-size: 18px; } body { width: auto; font-size: initial; }
+    </style>
+  </head>
+
+  <body id="cas">
+    <script type="text/javascript" src="https://header.nypl.org/dgx-header.min.js?urls=absolute" async></script>
+    <div class="loginPage">
+
+      <!-- Use for dual external and library authentication: -->
+      <div class="loginArea loginArea2Col">
+        <!-- Use for library-only authentication: -->
+        <!--<div class="loginArea loginArea1Col"> -->
+
+
+        <!--end theForm1-->
+        <form id="fm1" class="fm-v clearfix" method="post" action="/iii/cas/login">
+    <!--display any errors-->
+        <div id="status" class="errors">Sorry, the information you submitted was invalid. Please try again.</div>
+        <!-- Message from client webapp to be displayed on the CAS login screen -->
+        <div id="clientmessage">
+        <!--display any errors-->
+
+        </div> <!-- end clientmessage -->
+        <!--start theForm2-->
+
+          <!--display login form-->
+          <div id="login">
+            <fieldset>
+              <legend>Enter your barcode or username</legend>
+              <div id="username">
+              
+                <label for="code">Barcode or Username</label>
+                <input id="code" name="code" type="text" value="" size="20" maxlength="40" class="loginField" autofocus>
+              </div>
+
+              <!--<label for="user_name">Or: Your login/user name</label>
+                  <div class="loginFieldBg">
+                    <input id="user_name" name="username" type="text" value="" size="20" maxlength="25" class="loginField">
+                  </div>-->
+              
+              <div id="ipssopinentry">
+                <label for="pin">PIN</label>
+                <input id="pin" name="pin" type="password" value="" size="20" maxlength="40" class="loginField">
+              </div>
+
+              <div id="rememberLogin">
+                <label class="checkbox_label" for="rememberme">Remember this login information?</label>
+                <input name="rememberme" id="rememberme" type="checkbox">
+              </div>
+            </fieldset>
+
+        <!--end theForm2-->
+  
+  
+
+
+    
+        <!--start theForm3-->
+  
+              <!-- This button is hidden unless using mobile devices. Even if hidden it enables Enter key to submit. -->
+              <input type="submit" name="Log In" class="loginSubmit">
+              
+          </div>  <!-- end login -->
+
+          <div class="formButtons">
+            <input type="submit" value="Submit" />
+          </div>
+
+        <!--end theForm3-->
+        <!-- Spring Web Flow requirements must be in a certain place -->
+        <input type="hidden" name="lt" value="_c0897BA39-18B6-B4A8-CCA2-5467459E038A_k4332105F-6CEA-C09A-B192-0DD376EF0EF1" />
+        <input type="hidden" name="_eventId" value="submit" />
+        </form>
+        <!-- Java script to set the iput field to the values entered by user -->
+    <script language="JavaScript" type="text/javascript">
+        var currentName = '';
+        var currentCode = '23333114644899';
+        var currentExtpatid = '';
+        var currentExtpatserver = '';
+        var currentRememberme = 'on';
+        
+        function setInputFields(currentName, currentCode, currentExtpatid, currentExtpatserver, currentRememberme){
+            var inputFld = document.getElementsByName('name');
+            if( inputFld.length > 0  && currentName != null ){
+               inputFld[0].setAttribute('value', currentName );     
+            }
+            inputFld = document.getElementsByName('code');
+            if( inputFld.length > 0 && currentCode != null ){
+               inputFld[0].setAttribute('value', currentCode );
+            }
+            inputFld = document.getElementsByName('extpatid');
+            if( inputFld.length > 0 && currentExtpatid != null ){
+               inputFld[0].setAttribute('value', currentExtpatid );
+            }
+            inputFld = document.getElementsByName('extpatserver');
+            if( currentExtpatserver != null && currentExtpatserver.length > 0 ){
+            
+               for( var i = 0; i < inputFld.length ; i++ ){
+                  var value = inputFld[i].getAttribute('value');
+                  if( value != null && value == currentExtpatserver){
+                     if( inputFld[i].type == 'radio' )
+                        inputFld[i].checked = true;
+                  }else{
+                     if( inputFld[i].type == 'radio' )
+                        inputFld[i].checked = false;
+                  }
+               }
+            }
+            inputFld = document.getElementsByName('rememberme');
+            if( inputFld.length > 0){
+               inputFld[0].checked =  (currentRememberme != null && currentRememberme == 'on' );
+            }             
+        }
+        setInputFields(currentName, currentCode, currentExtpatid, currentExtpatserver, currentRememberme);
+        
+    </script>
+    
+    
+        <!--start theForm4-->
+
+
+
+      </div> <!-- end loginArea -->
+      
+      <div class="loginActions">
+        <span class="loginActionText">New to the library?</span>
+        <span class="loginActionScreenOnly"><a class="nyplCardAppLinkLocal" href="/selfreg">Create an account</a></span>
+        <span class="loginActionSeparator"></span>
+        <span class="loginActionScreenOnly"><a href="/pinreset">Forgot Your PIN?</a></span>
+        <span class="loginActionSeparator"></span>
+        <span class="loginAction"><a href="/">Home</a></span>
+      </div>
+    </div> <!-- loginPage -->
+    
+    <!-- IPSSO html form updated 2010 June 29 -->
+  </body>
+</html>
+
+<!--this is customized </iiidb/http/apps//CAS/resources/ipsso.html>-->
+
+        <!--end theForm4-->
