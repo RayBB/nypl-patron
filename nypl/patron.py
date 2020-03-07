@@ -1,7 +1,9 @@
-import requests
-import urllib
 import json
 import re
+import urllib
+
+import requests
+
 from bs4 import BeautifulSoup
 
 
